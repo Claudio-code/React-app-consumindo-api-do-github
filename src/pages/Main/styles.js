@@ -94,8 +94,3 @@ export const List = styled.ul`
     }
   }
 `;
-
-export const Link = styled.a`
-  color: #01579b;
-  text-decoration: none;
-`;

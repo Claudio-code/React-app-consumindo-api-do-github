@@ -50,8 +50,9 @@ export const Form = styled.form`
 
 export const SubmitButton = styled.button.attrs(props => ({
   type: "submit",
-  disabled: props.loading,
+  disabled: props.loading === "true",
 }))`
+  ${props => console.log(Boolean(props.loading))}
   background: #01579b;
   border: 0;
   padding: 0 15px;
@@ -69,10 +70,32 @@ export const SubmitButton = styled.button.attrs(props => ({
   }
 
   ${props =>
-    props.loading &&
+    props.loading === "true" &&
     css`
       svg {
         animation: ${rotate} 2s linear infinite;
       }
     `}
+`;
+
+export const List = styled.ul`
+  list-style: none;
+  margin-top: 30px;
+
+  li {
+    padding: 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    & + li {
+      border-top: 1px solid #00bcd4;
+    }
+  }
+`;
+
+export const Link = styled.a`
+  color: #01579b;
+  text-decoration: none;
 `;

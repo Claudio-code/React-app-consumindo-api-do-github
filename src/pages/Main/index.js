@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { FaGithubAlt, FaPlus, FaSpinner } from "react-icons/fa";
-import { Container, Form, SubmitButton } from "./styles";
+import { Container, Form, SubmitButton, List, Link } from "./styles";
 import api from "../../services/api";
 
 export default function Main() {
   const [newRepo, setNewRepo] = useState("");
   const [repositorios, setRepositorios] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState("false");
+
+  useEffect(() => {
+    const repositoriosLocalStorage = localStorage.getItem("repositorios");
+    if (repositoriosLocalStorage) {
+      setRepositorios(JSON.parse(repositoriosLocalStorage));
+    }
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -15,7 +22,7 @@ export default function Main() {
       if (!newRepo) {
         return;
       }
-      setLoading(true);
+      setLoading("true");
 
       const response = await api.get(`/repos/${newRepo}`);
 
@@ -26,13 +33,17 @@ export default function Main() {
       const repositoriosPlus = repositorios;
       repositoriosPlus.push(data);
 
+      // if (repositoriosPlus !== repositorios) {
+      localStorage.setItem("repositorios", JSON.stringify(repositoriosPlus));
       setRepositorios(repositoriosPlus);
+      // }
+
       setNewRepo("");
-      setLoading(false);
+      setLoading("false");
     } catch (error) {
       console.log(error);
       setNewRepo("");
-      setLoading(false);
+      setLoading("false");
     }
   }
 
@@ -52,13 +63,21 @@ export default function Main() {
         />
 
         <SubmitButton loading={loading}>
-          {loading ? (
+          {loading === "true" ? (
             <FaSpinner color="#000" fontSize={14} />
           ) : (
             <FaPlus color="#fff" fontSize={14} />
           )}
         </SubmitButton>
       </Form>
+      <List>
+        {repositorios.map(repositorio => (
+          <li key={repositorio.name}>
+            <span>{repositorio.name}</span>
+            <Link href="/re">Detalhes</Link>
+          </li>
+        ))}
+      </List>
     </Container>
   );
 }

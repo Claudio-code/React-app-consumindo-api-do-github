@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
+import Container from "../../components/Container";
 import api from "../../services/api";
-// import { Container } from './styles';
+import { Loading, Owner } from "./styles";
 
 export default function Repository({ match }) {
   const [loading, setLoading] = useState(true);
@@ -33,5 +35,24 @@ export default function Repository({ match }) {
     getAllInfoRepository();
   }, [repository]);
 
-  return <div>Repository</div>;
+  if (loading) {
+    return (
+      <Loading>
+        caregando
+        <FaSpinner color="#FFF" fontSize={24} style={{ marginLeft: 22 }} />
+      </Loading>
+    );
+  }
+  return (
+    <Container>
+      <Owner>
+        <img
+          src={allInfoRepository.owner.avatar_url}
+          alt={allInfoRepository.owner.login}
+        />
+        <h1>{allInfoRepository.name}</h1>
+        <p>{allInfoRepository.description}</p>
+      </Owner>
+    </Container>
+  );
 }

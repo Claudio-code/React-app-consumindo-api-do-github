@@ -20,6 +20,7 @@ export const Form = styled.form`
     padding: 10px 15px;
     border-radius: 5px;
     font-size: 14px;
+    transition: 0.2s;
   }
 
   input:focus {

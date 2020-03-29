@@ -1,4 +1,8 @@
-# React-app-consumindo-api-do-github
+<h1 align="center"> 
+  <br> :stars: React js app consumindo api do github :stars: <br> 
+</h1>|
+
+## Introdução
 
 Objetivo aprender a trabalhar com reactjs criando um frontend que consuma a api do github.
 ```

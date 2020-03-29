@@ -1,6 +1,6 @@
 <h1 align="center"> 
   <br> :stars: React js app consumindo api do github :stars: <br> 
-</h1>|
+</h1>
 
 ## Introdução
 

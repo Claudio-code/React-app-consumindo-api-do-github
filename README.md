@@ -4,7 +4,7 @@
 
 ## Introdução
 
-Objetivo aprender a trabalhar com reactjs criando um frontend que consuma a api do github.
+Objetivo aprender a trabalhar com reactjs criando um frontend que consuma a api do github, que foi posta em produção em entegração continua com o heroku.
 ```
 nesse link: https://reactjsconsumingithubrestapi.herokuapp.com/
 ```

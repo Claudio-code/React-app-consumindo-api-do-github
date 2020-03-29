@@ -1,6 +1,9 @@
 # React-app-consumindo-api-do-github
 
 Objetivo aprender a trabalhar com reactjs criando um frontend que consuma a api do github.
+```
+nesse link: https://reactjsconsumingithubrestapi.herokuapp.com/
+```
 
 ### Tela principal
 Aqui você pode inserir um repositorio e ele ficara salvo no seu navegador.
